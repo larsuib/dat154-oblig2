@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>_1___Space_Object</RootNamespace>
+    <RootNamespace>Space_Object</RootNamespace>
   </PropertyGroup>
 
 </Project>

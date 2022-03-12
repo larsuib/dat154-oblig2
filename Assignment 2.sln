@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1 - Space Object", "1 - Space Object\1 - Space Object.csproj", "{D3AF02F0-AAE6-441C-B437-02D860C121E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Object", "Space Object\Space Object.csproj", "{D3AF02F0-AAE6-441C-B437-02D860C121E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2 - Space Sim", "2 - Space Sim\2 - Space Sim.csproj", "{5036E4AF-247E-4AD3-AAF3-01C281BE1093}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Sim", "Space Sim\Space Sim.csproj", "{5036E4AF-247E-4AD3-AAF3-01C281BE1093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
