@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Object", "Space Objec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Sim", "Space Sim\Space Sim.csproj", "{5036E4AF-247E-4AD3-AAF3-01C281BE1093}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests Space Object", "Tests Space Object\Tests Space Object.csproj", "{F65F791A-04C9-4356-B713-031E408BED7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65F791A-04C9-4356-B713-031E408BED7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65F791A-04C9-4356-B713-031E408BED7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65F791A-04C9-4356-B713-031E408BED7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65F791A-04C9-4356-B713-031E408BED7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

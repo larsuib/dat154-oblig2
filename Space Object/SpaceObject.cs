@@ -1,11 +1,31 @@
 ﻿using System;
+using System.Drawing;
 
-namespace SpaceSim
+namespace SpaceObjects
 {
+
+    public class Position2D
+    {
+        public float X { get; set; }
+        public float Y { get; set; }
+
+        public Position2D(float _x, float _y)
+        {
+            X = _x;
+            Y = _y;
+        }
+    }
+    
     public class SpaceObject
     {
 
         protected String name;
+        protected float OrbitalRadius { get; set; }
+        protected float OrbitalPeriod { get; set; }
+        protected float ObjectRadius { get; set; }
+        protected float RotationalPeriod { get; set; }
+        protected Color ObjectColor { get; set; }
+
 
         public SpaceObject(String _name)
         {
@@ -14,6 +34,11 @@ namespace SpaceSim
         public virtual void Draw()
         {
             Console.WriteLine(name);
+        }
+
+        public Position2D GetPosition(float time)
+        {
+            throw new NotImplementedException();
         }
     }
 
