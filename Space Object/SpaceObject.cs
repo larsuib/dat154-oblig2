@@ -15,7 +15,7 @@ namespace SpaceObjects
             Y = _y;
         }
     }
-    
+
     public class SpaceObject
     {
 
@@ -27,9 +27,15 @@ namespace SpaceObjects
         protected Color ObjectColor { get; set; }
 
 
-        public SpaceObject(String _name)
+        public SpaceObject
+            (String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
         {
             name = _name;
+            OrbitalRadius = _orbitalRadius;
+            OrbitalPeriod = _orbitalPeriod;
+            ObjectRadius = _objectRadius;
+            RotationalPeriod = _rotationalPeriod;
+            ObjectColor = _objectColor;
         }
         public virtual void Draw()
         {
@@ -44,7 +50,8 @@ namespace SpaceObjects
 
     public class Star : SpaceObject
     {
-        public Star(String _name) : base(_name) { }
+        public Star(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
         public override void Draw()
         {
             Console.Write("Star  : ");
@@ -54,7 +61,8 @@ namespace SpaceObjects
 
     public class Planet : SpaceObject
     {
-        public Planet(String _name) : base(_name) { }
+        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
         public override void Draw()
         {
             Console.Write("Planet : ");
@@ -64,7 +72,8 @@ namespace SpaceObjects
 
     public class Moon : SpaceObject
     {
-        public Moon(String _name) : base(_name) { }
+        public Moon(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
 
         public override void Draw()
         {
@@ -77,7 +86,8 @@ namespace SpaceObjects
     // planets.Make sure each of these new objects inherits correctly.
     public class Comet : SpaceObject
     {
-        public Comet(String _name) : base(_name) { }
+        public Comet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
 
         public override void Draw()
         {
@@ -88,7 +98,8 @@ namespace SpaceObjects
 
     public class Asteroid : SpaceObject
     {
-        public Asteroid(String _name) : base(_name) { }
+        public Asteroid(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
 
         public override void Draw()
         {
@@ -101,11 +112,12 @@ namespace SpaceObjects
     {
         public Asteroid[] Asteroids { get; set; }
 
-        public AsteroidBelt(String _name) : base(_name) { }
-        public AsteroidBelt(String _name, Asteroid[] _asteroids) : base(_name)
+        public AsteroidBelt(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor, Asteroid[] _asteroids)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
         {
             Asteroids = _asteroids;
         }
+
 
         public override void Draw()
         {
@@ -116,7 +128,8 @@ namespace SpaceObjects
 
     public class DwarfPlanet : Planet
     {
-        public DwarfPlanet(String _name) : base(_name) { }
+        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor, Asteroid[] _asteroids)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
 
         public override void Draw()
         {
