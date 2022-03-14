@@ -143,10 +143,14 @@ namespace SpaceObjects
         }
     }
 
-    public class DwarfPlanet : Planet
+    public class DwarfPlanet : SpaceObject
     {
-        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Moon[] Moons;
+        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
+        {
+            Moons = _moons;
+        }
 
         public override void Draw()
         {
