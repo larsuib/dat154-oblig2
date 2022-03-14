@@ -9,9 +9,9 @@ class Astronomy
     {
         List<SpaceObject> a = new List<SpaceObject>();
 
-        SpaceObject star = new SpaceObject("Sun", 0, 0, 695000, 1, Color.Yellow);
-        SpaceObject earth = new SpaceObject("Earth", 149600, 365, 6357, 1, Color.Green);
-
+        Star star = new Star("Sun", 0, 0, 695000, 1, Color.Yellow);
+        Planet earth = new Planet("Earth", 149600, 365, 6357, 1, Color.Green);
+        //Planet merucry = new Planet("Mercury", )
 
         a.Add(star);
         a.Add(earth);
@@ -20,10 +20,17 @@ class Astronomy
         //a.Add(new Planet("Terra"));
         //a.Add(new Moon("The Moon"));
 
-        foreach (SpaceObject s in a)
-        {
-            s.Draw();
-        }
+        //Mercury
+        //Venus
+        //Earth
+        //Mars
+        //Jupiter
+        //Saturn
+        //Uranus
+        //Neptune
+        //Pluto
+
+        Console.WriteLine(earth.GetPosition(150));
 
         Console.ReadLine();
     }
