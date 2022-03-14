@@ -14,6 +14,10 @@ namespace SpaceObjects
             X = _x;
             Y = _y;
         }
+        public override string ToString()
+        {
+            return "("+X+", "+Y+")";
+        }
     }
 
     public class SpaceObject
@@ -44,8 +48,8 @@ namespace SpaceObjects
 
         public Position2D GetPosition(float time)
         {
-
-            float radians = ((time / OrbitalPeriod) * (2f * (float) Math.PI)); // Tall mellom 0 og 1
+            time %= OrbitalPeriod;
+            float radians = (time / OrbitalPeriod) * (2f * (float) Math.PI); // Tall mellom 0 og 1
 
             float X = OrbitalRadius + (OrbitalRadius * (float) Math.Cos(radians));
             float Y = OrbitalRadius + (OrbitalRadius * (float) Math.Sin(radians));
