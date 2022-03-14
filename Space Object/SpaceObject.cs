@@ -14,6 +14,10 @@ namespace SpaceObjects
             X = _x;
             Y = _y;
         }
+        public override string ToString()
+        {
+            return "("+X+", "+Y+")";
+        }
     }
 
     public class SpaceObject
@@ -45,6 +49,7 @@ namespace SpaceObjects
         public Position2D GetPosition(float time)
         {
             time %= OrbitalPeriod;
+
             float radians = ((time / OrbitalPeriod) * (2f * (float) Math.PI)); // Tall mellom 0 og 1
 
             float X = OrbitalRadius + (OrbitalRadius * (float) Math.Cos(radians));
@@ -134,7 +139,7 @@ namespace SpaceObjects
 
     public class DwarfPlanet : Planet
     {
-        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor, Asteroid[] _asteroids)
+        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
 
         public override void Draw()
