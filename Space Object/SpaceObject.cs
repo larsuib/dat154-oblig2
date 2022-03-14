@@ -44,7 +44,13 @@ namespace SpaceObjects
 
         public Position2D GetPosition(float time)
         {
-            throw new NotImplementedException();
+
+            float radians = ((time / OrbitalPeriod) * (2f * (float) Math.PI)); // Tall mellom 0 og 1
+
+            float X = OrbitalRadius + (OrbitalRadius * (float) Math.Cos(radians));
+            float Y = OrbitalRadius + (OrbitalRadius * (float) Math.Sin(radians));
+
+            return new Position2D(X, Y);
         }
     }
 

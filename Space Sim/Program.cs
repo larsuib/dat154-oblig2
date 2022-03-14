@@ -1,6 +1,7 @@
 ﻿using SpaceObjects;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 class Astronomy
 {
@@ -8,11 +9,16 @@ class Astronomy
     {
         List<SpaceObject> a = new List<SpaceObject>();
 
-        a.Add(new Star("Sun"));
-        a.Add(new Planet("Mercury"));
-        a.Add(new Planet("Venus"));
-        a.Add(new Planet("Terra"));
-        a.Add(new Moon("The Moon"));
+        SpaceObject star = new SpaceObject("Sun", 0, 0, 695000, 1, Color.Yellow);
+        SpaceObject earth = new SpaceObject("Earth", 149600, 365, 6357, 1, Color.Green);
+
+
+        a.Add(star);
+        a.Add(earth);
+        //a.Add(new Planet("Mercury"));
+        //a.Add(new Planet("Venus"));
+        //a.Add(new Planet("Terra"));
+        //a.Add(new Moon("The Moon"));
 
         foreach (SpaceObject s in a)
         {
