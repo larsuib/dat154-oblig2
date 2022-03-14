@@ -71,12 +71,20 @@ namespace SpaceObjects
 
     public class Planet : SpaceObject
     {
-        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Moon[] Moons;
+
+        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons, Color _objectColor)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
+        {
+            Moons = _moons;
+        }
         public override void Draw()
         {
             Console.Write("Planet : ");
             base.Draw();
+
+            foreach (var moon in Moons)
+                moon.Draw();
         }
     }
 
@@ -92,8 +100,6 @@ namespace SpaceObjects
         }
     }
 
-    // omets, asteroids, asteroid belts, and dwarf 
-    // planets.Make sure each of these new objects inherits correctly.
     public class Comet : SpaceObject
     {
         public Comet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
