@@ -35,10 +35,11 @@ class Astronomy
         Planet neptune = new Planet("Neptune", 4505300, 60190, 24622, 1, neptuneMoons, Color.Blue);
         DwarfPlanet pluto = new DwarfPlanet("Pluto", 593520, 90550, 1188, 1, plutoMoons, Color.BlueViolet);
 
+        Console.WriteLine("Number of days elapsed:");
+        float numberOfDaysElapsed = int.Parse(Console.ReadLine());
 
-        
-
-        Console.ReadLine();
+        Console.WriteLine("Name of the spaceobject:");
+        string spaceObject = Console.ReadLine();
     }
 }
 
