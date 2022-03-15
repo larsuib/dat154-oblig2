@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Object", "Space Object\Space Object.csproj", "{D3AF02F0-AAE6-441C-B437-02D860C121E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Sim", "Space Sim\Space Sim.csproj", "{5036E4AF-247E-4AD3-AAF3-01C281BE1093}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Space Sim CLI", "Space Sim\Space Sim CLI.csproj", "{5036E4AF-247E-4AD3-AAF3-01C281BE1093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Sim GUI", "Space Sim GUI\Space Sim GUI.csproj", "{DA7C3B8A-2211-4933-A4C3-52D7A1C70F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5036E4AF-247E-4AD3-AAF3-01C281BE1093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7C3B8A-2211-4933-A4C3-52D7A1C70F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7C3B8A-2211-4933-A4C3-52D7A1C70F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7C3B8A-2211-4933-A4C3-52D7A1C70F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7C3B8A-2211-4933-A4C3-52D7A1C70F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
