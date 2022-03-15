@@ -48,6 +48,9 @@ namespace SpaceObjects
 
         public Position2D GetPosition(float time)
         {
+            if (OrbitalRadius == 0)
+                return new Position2D(0f, 0f);  // 0 in radius -> Origo of the simulation
+
             time %= OrbitalPeriod;
 
             float radians = ((time / OrbitalPeriod) * (2f * (float) Math.PI)); // Tall mellom 0 og 1
@@ -84,6 +87,7 @@ namespace SpaceObjects
             Console.Write("Planet : ");
             base.Draw();
 
+            Console.WriteLine("Moons:");
             foreach (var moon in Moons)
                 moon.Draw();
         }
@@ -96,7 +100,7 @@ namespace SpaceObjects
 
         public override void Draw()
         {
-            Console.Write("Moon  : ");
+            Console.Write("Moon : ");
             base.Draw();
         }
     }
