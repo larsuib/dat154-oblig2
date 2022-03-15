@@ -38,9 +38,19 @@ class Astronomy
         DwarfPlanet pluto = new DwarfPlanet("Pluto", 593520, 90550, 1188, 1, plutoMoons, Color.BlueViolet);
 
         
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("===== Number of days elapsed =====");
-        float numberOfDaysElapsed = int.Parse(Console.ReadLine());
+        float numberOfDaysElapsed = -1f;
+        while (numberOfDaysElapsed < 0f) {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("===== Number of days elapsed =====");
+
+            numberOfDaysElapsed = int.Parse(Console.ReadLine());
+            if (numberOfDaysElapsed < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Number of days can't be less than 0, try again!\n");
+                Console.ResetColor();
+            }
+        }
         Console.ResetColor();
 
         Console.ForegroundColor = ConsoleColor.Green;
