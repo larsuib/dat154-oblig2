@@ -37,6 +37,13 @@ namespace Space_Sim_GUI
             get => _earth;
             set { _earth = value; OnPropertyChanged(); }
         }
+        
+        private DwarfPlanet _pluto;
+        public DwarfPlanet Pluto
+        {
+            get => _pluto;
+            set { _pluto = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public MainWindow()
@@ -44,26 +51,28 @@ namespace Space_Sim_GUI
             InitializeComponent();
 
             setupPlanets();
+
             UpdatePostition += Sun.UpdatePosition;
             UpdatePostition += Earth.UpdatePosition;
+            UpdatePostition += Pluto.UpdatePosition;
 
             _dispatchTimer = new DispatcherTimer
             {
                 Interval = new TimeSpan(NANOS_IN_HUNDREDS_PER_TICK),
             };
-            _dispatchTimer.Tick += Tick;
+            _dispatchTimer.Tick += tick;
             _dispatchTimer.Start();
         }
 
         private void setupPlanets()
         {
-            Sun = new Star("Sun", 0, 0, 695000, 1, Color.Yellow);
-            Earth = new Planet("Earth", 149600, 365, 6357, 1, new Moon[] { }, Color.Green);
+            Sun = new Star("Sun", 0, 0, 695000, 1);
+            Earth = new Planet("Earth", 149600, 365, 6357, 1, new Moon[] { });
+            Pluto = new DwarfPlanet("Pluto", 593520, 90550, 1188, 550800, new Moon[] { });
         }
 
-        private void Tick(object sender, EventArgs eventArgs)
+        private void tick(object sender, EventArgs eventArgs)
         {
-            Trace.WriteLine(Earth.X);
             _timeElapsedInDays += 1;
             UpdatePostition(_timeElapsedInDays);
         }

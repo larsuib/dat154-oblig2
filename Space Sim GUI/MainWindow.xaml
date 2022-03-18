@@ -19,6 +19,12 @@
                 Canvas.Left="{Binding Earth.X}"
                 Canvas.Top="{Binding Earth.Y}"
                 Width="30" Height="30" Fill="Green" />
+            
+            <Ellipse
+                Name="_Pluto"
+                Canvas.Left="{Binding Pluto.X}"
+                Canvas.Top="{Binding Pluto.Y}"
+                Width="30" Height="30" Fill="Blue" />
         </Canvas>
     </Grid>
 </Window>

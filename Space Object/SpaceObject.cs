@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 
@@ -40,7 +39,7 @@ namespace SpaceObjects
             get => _x;
             set
             {
-                _x = value;
+                _x = value / 100;
                 OnPropertyChanged();
             }
         }
@@ -51,7 +50,7 @@ namespace SpaceObjects
             get => _y;
             set
             {
-                _y = value;
+                _y = value / 100;
                 OnPropertyChanged();
             }
         }
@@ -59,18 +58,15 @@ namespace SpaceObjects
         protected float OrbitalPeriod { get; set; }
         protected float ObjectRadius { get; set; }
         protected float RotationalPeriod { get; set; }
-        protected Color ObjectColor { get; set; }
-
 
         public SpaceObject
-            (String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
+            (String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
         {
             name = _name;
             OrbitalRadius = _orbitalRadius;
             OrbitalPeriod = _orbitalPeriod;
             ObjectRadius = _objectRadius;
             RotationalPeriod = _rotationalPeriod;
-            ObjectColor = _objectColor;
         }
         public virtual void Draw()
         {
@@ -80,8 +76,8 @@ namespace SpaceObjects
         public void UpdatePosition(float time)
         {
             Position2D currentPosition = GetPosition(time);
-            X = currentPosition.X/1000;
-            Y = currentPosition.Y/1000;
+            X = currentPosition.X;
+            Y = currentPosition.Y;
         }
 
         public Position2D GetPosition(float time)
@@ -102,8 +98,8 @@ namespace SpaceObjects
 
     public class Star : SpaceObject
     {
-        public Star(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Star(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
         public override void Draw()
         {
             Console.Write("Star  : ");
@@ -115,8 +111,8 @@ namespace SpaceObjects
     {
         public Moon[] Moons;
 
-        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
+        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Moons = _moons;
         }
@@ -133,8 +129,8 @@ namespace SpaceObjects
 
     public class Moon : SpaceObject
     {
-        public Moon(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Moon(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
         {
@@ -145,8 +141,8 @@ namespace SpaceObjects
 
     public class Comet : SpaceObject
     {
-        public Comet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Comet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
         {
@@ -157,8 +153,8 @@ namespace SpaceObjects
 
     public class Asteroid : SpaceObject
     {
-        public Asteroid(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor) { }
+        public Asteroid(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
         {
@@ -171,8 +167,8 @@ namespace SpaceObjects
     {
         public Asteroid[] Asteroids { get; set; }
 
-        public AsteroidBelt(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Color _objectColor, Asteroid[] _asteroids)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
+        public AsteroidBelt(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Asteroid[] _asteroids)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Asteroids = _asteroids;
         }
@@ -188,8 +184,8 @@ namespace SpaceObjects
     public class DwarfPlanet : SpaceObject
     {
         public Moon[] Moons;
-        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons, Color _objectColor)
-            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod, _objectColor)
+        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons)
+            : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Moons = _moons;
         }
