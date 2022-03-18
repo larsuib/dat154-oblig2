@@ -1,17 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace SpaceObjects
 {
 
     public class Position2D
     {
-        public float X { get; set; }
-        public float Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
 
-        public Position2D(float _x, float _y)
+        public Position2D(double _x, double _y)
         {
             X = _x;
             Y = _y;
@@ -22,45 +20,18 @@ namespace SpaceObjects
         }
     }
 
-    public class SpaceObject : INotifyPropertyChanged
+    public class SpaceObject
     {
-
-        protected String name;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string memberName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
-        }
-
-        private float _x { get; set; }
-        public float X
-        {
-            get => _x / 1000;
-            set
-            {
-                _x = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private float _y { get; set; }
-        public float Y
-        {
-            get => _y / 1000;
-            set
-            {
-                _y = value;
-                OnPropertyChanged();
-            }
-        }
-        protected float OrbitalRadius { get; set; }
-        protected float OrbitalPeriod { get; set; }
-        protected float ObjectRadius { get; set; }
-        protected float RotationalPeriod { get; set; }
+        protected string name;
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double OrbitalRadius { get; set; }
+        public double OrbitalPeriod { get; set; }
+        public double ObjectRadius { get; set; }
+        public double RotationalPeriod { get; set; }
 
         public SpaceObject
-            (String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+            (string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod)
         {
             name = _name;
             OrbitalRadius = _orbitalRadius;
@@ -73,32 +44,75 @@ namespace SpaceObjects
             Console.WriteLine(name);
         }
 
-        public void UpdatePosition(float time)
+        public void UpdatePositionWithScaling(double time)
         {
-            Position2D currentPosition = GetPosition(time);
-            X = currentPosition.X;
-            Y = currentPosition.Y;
+            Position2D pos = GetPosition(time);
+
+            if (name.Equals("Sun"))
+            {
+                X = pos.X;
+                Y = pos.Y;
+                return;
+            }
+
+            // Applying scaling
+            // Procedure gathered from following link:
+            // https://gamedev.stackexchange.com/a/104709
+            // (Gathered 18.03.2022)
+
+            // The conversion itself uses procedures found here:
+            // https://www.mathsisfun.com/polar-cartesian-coordinates.html
+            // (gathered 18.03.2022)
+            (double, double) polarCoordinates = (
+                Math.Sqrt(Math.Pow(pos.X, 2) + Math.Pow(pos.Y, 2)),
+                Math.Atan(pos.Y / pos.X)
+            );
+
+            // Applying scaling
+            ScaleDistance(ref polarCoordinates.Item1);
+
+            // Converting back to cartesian
+            (double, double) scaledCartesianCoordinates = (
+                polarCoordinates.Item1 * Math.Cos(polarCoordinates.Item2),
+                polarCoordinates.Item1 * Math.Sin(polarCoordinates.Item2)
+            );
+
+            X = scaledCartesianCoordinates.Item1;
+            Y = scaledCartesianCoordinates.Item2;
+
+            // Magic
+            if (pos.X < 0)
+            {
+                X *= -1;
+                Y *= -1;
+            }
         }
 
-        public Position2D GetPosition(float time)
+        private void ScaleDistance(ref double polarDistance)
+        {
+            polarDistance = Math.Log(polarDistance, 1.04);
+        }
+
+        public Position2D GetPosition(double time)
         {
             if (OrbitalRadius == 0)
                 return new Position2D(0f, 0f);  // 0 in radius -> Origo of the simulation
 
             time %= OrbitalPeriod;
 
-            float radians = (time / OrbitalPeriod) * (2f * (float) Math.PI); // Tall mellom 0 og 1
+            double normalizedAngle = time / OrbitalPeriod;
+            double radians = normalizedAngle * (2*Math.PI); // Tall mellom 0 og 2*PI
 
-            X = OrbitalRadius * (float) Math.Cos(radians);
-            Y = OrbitalRadius * (float) Math.Sin(radians);
+            double x = OrbitalRadius * Math.Cos(radians);
+            double y = OrbitalRadius * Math.Sin(radians);
 
-            return new Position2D(X, Y);
+            return new Position2D(x, y);
         }
     }
 
     public class Star : SpaceObject
     {
-        public Star(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+        public Star(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
         public override void Draw()
         {
@@ -109,9 +123,9 @@ namespace SpaceObjects
 
     public class Planet : SpaceObject
     {
-        public Moon[] Moons;
+        public Moon[] Moons { get; set; }
 
-        public Planet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons)
+        public Planet(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod, Moon[] _moons)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Moons = _moons;
@@ -125,11 +139,13 @@ namespace SpaceObjects
             foreach (var moon in Moons)
                 moon.Draw();
         }
+
+        
     }
 
     public class Moon : SpaceObject
     {
-        public Moon(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+        public Moon(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
@@ -141,7 +157,7 @@ namespace SpaceObjects
 
     public class Comet : SpaceObject
     {
-        public Comet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+        public Comet(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
@@ -153,7 +169,7 @@ namespace SpaceObjects
 
     public class Asteroid : SpaceObject
     {
-        public Asteroid(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod)
+        public Asteroid(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod) { }
 
         public override void Draw()
@@ -167,7 +183,7 @@ namespace SpaceObjects
     {
         public Asteroid[] Asteroids { get; set; }
 
-        public AsteroidBelt(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Asteroid[] _asteroids)
+        public AsteroidBelt(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod, Asteroid[] _asteroids)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Asteroids = _asteroids;
@@ -184,7 +200,7 @@ namespace SpaceObjects
     public class DwarfPlanet : SpaceObject
     {
         public Moon[] Moons;
-        public DwarfPlanet(String _name, float _orbitalRadius, float _orbitalPeriod, float _objectRadius, float _rotationalPeriod, Moon[] _moons)
+        public DwarfPlanet(string _name, double _orbitalRadius, double _orbitalPeriod, double _objectRadius, double _rotationalPeriod, Moon[] _moons)
             : base(_name, _orbitalRadius, _orbitalPeriod, _objectRadius, _rotationalPeriod)
         {
             Moons = _moons;

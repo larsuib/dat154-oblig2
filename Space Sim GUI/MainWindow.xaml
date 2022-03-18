@@ -5,26 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
-        <Canvas Background="Black">
-            <Ellipse
-                Name="_Sun"
-                Canvas.Left="{Binding Sun.X}"
-                Canvas.Top="{Binding Sun.Y}"
-                Width="50" Height="50" Fill="Yellow" />
+        <Canvas x:Name="Space" Background="Black">
+            <Label x:Name="DaysPassedLabel" Foreground="White" Canvas.Left="0" Canvas.Top="0"/>
+            <Label x:Name="TimeSpeed" Foreground="White" Canvas.Left="0" Canvas.Top="20"/>
+            <Label x:Name="EarthCoordinates" Foreground="White" Canvas.Left="0" Canvas.Top="40"/>
             
-            <Ellipse
-                Name="_Earth"
-                Canvas.Left="{Binding Earth.X}"
-                Canvas.Top="{Binding Earth.Y}"
-                Width="30" Height="30" Fill="Green" />
-            
-            <Ellipse
-                Name="_Pluto"
-                Canvas.Left="{Binding Pluto.X}"
-                Canvas.Top="{Binding Pluto.Y}"
-                Width="30" Height="30" Fill="Blue" />
+            <Ellipse x:Name="Ellipse_Sun" Fill="Yellow" Width="80" Height="80" Canvas.Left="560" Canvas.Top="360"/>
+            <Ellipse x:Name="Ellipse_Earth" Fill="Green" Width="50" Height="50" Canvas.Left="720" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Mars" Fill="Red" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Jupiter" Fill="SaddleBrown" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Saturn" Fill="Peru" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Uranus" Fill="DarkGray" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Neptune" Fill="Blue" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Mercury" Fill="Orange" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Venus" Fill="Brown" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Pluto" Fill="Blue" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
         </Canvas>
     </Grid>
 </Window>
