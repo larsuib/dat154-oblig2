@@ -36,10 +36,10 @@ namespace SpaceObjects
         private float _x { get; set; }
         public float X
         {
-            get => _x;
+            get => _x / 1000;
             set
             {
-                _x = value / 100;
+                _x = value;
                 OnPropertyChanged();
             }
         }
@@ -47,10 +47,10 @@ namespace SpaceObjects
         private float _y { get; set; }
         public float Y
         {
-            get => _y;
+            get => _y / 1000;
             set
             {
-                _y = value / 100;
+                _y = value;
                 OnPropertyChanged();
             }
         }
