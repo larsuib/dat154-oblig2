@@ -3,10 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Space_Sim_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
-
+        <Canvas Background="Black">
+            <Ellipse
+                Name="_Sun"
+                Canvas.Left="{Binding Sun.X}"
+                Canvas.Top="{Binding Sun.Y}"
+                Width="50" Height="50" Fill="Yellow" />
+            
+            <Ellipse
+                Name="_Earth"
+                Canvas.Left="{Binding Earth.X}"
+                Canvas.Top="{Binding Earth.Y}"
+                Width="30" Height="30" Fill="Green" />
+        </Canvas>
     </Grid>
 </Window>

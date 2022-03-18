@@ -1,5 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace SpaceObjects
 {
@@ -20,10 +23,38 @@ namespace SpaceObjects
         }
     }
 
-    public class SpaceObject
+    public class SpaceObject : INotifyPropertyChanged
     {
 
         protected String name;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string memberName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
+        }
+
+        private float _x { get; set; }
+        public float X
+        {
+            get => _x;
+            set
+            {
+                _x = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float _y { get; set; }
+        public float Y
+        {
+            get => _y;
+            set
+            {
+                _y = value;
+                OnPropertyChanged();
+            }
+        }
         protected float OrbitalRadius { get; set; }
         protected float OrbitalPeriod { get; set; }
         protected float ObjectRadius { get; set; }
@@ -46,6 +77,13 @@ namespace SpaceObjects
             Console.WriteLine(name);
         }
 
+        public void UpdatePosition(float time)
+        {
+            Position2D currentPosition = GetPosition(time);
+            X = currentPosition.X/1000;
+            Y = currentPosition.Y/1000;
+        }
+
         public Position2D GetPosition(float time)
         {
             if (OrbitalRadius == 0)
@@ -53,10 +91,10 @@ namespace SpaceObjects
 
             time %= OrbitalPeriod;
 
-            float radians = ((time / OrbitalPeriod) * (2f * (float) Math.PI)); // Tall mellom 0 og 1
+            float radians = (time / OrbitalPeriod) * (2f * (float) Math.PI); // Tall mellom 0 og 1
 
-            float X = OrbitalRadius + (OrbitalRadius * (float) Math.Cos(radians));
-            float Y = OrbitalRadius + (OrbitalRadius * (float) Math.Sin(radians));
+            X = OrbitalRadius * (float) Math.Cos(radians);
+            Y = OrbitalRadius * (float) Math.Sin(radians);
 
             return new Position2D(X, Y);
         }
