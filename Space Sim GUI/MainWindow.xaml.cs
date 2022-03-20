@@ -29,15 +29,15 @@ namespace Space_Sim_GUI
             #region SpaceObject Init
             sun = new Star("Sun", 0, 0, 695000, 2332800);
             Moon[] earthMoons = { new Moon("Moon", 384, 27, 1738, 2332800) };
-            earth = new Planet("Earth", 149600, 365, 6357, 86400, earthMoons);
-            saturn = new Planet("Saturn", 1429400, 10760, 58232, 38520, new Moon[] {});
-            mercury = new Planet("Mercury", 57910, 88, 2440, 5067000, new Moon[] {});
-            venus = new Planet("Venus", 108200, 225, 6052, 10087200, new Moon[] { });
-            mars = new Planet("Mars", 227940, 687, 3389, 88620, new Moon[] { });
-            jupiter = new Planet("Jupiter", 778330, 4333, 69911, 35760, new Moon[] { });
-            uranus = new Planet("Uranus", 2870990, 30685, 25362, 62040, new Moon[] { });
-            neptune = new Planet("Neptune", 4505300, 60190, 24622, 57960, new Moon[] { });
-            pluto = new DwarfPlanet("Pluto", 593520, 90550, 1188, 550800, new Moon[] { });
+            earth =         new Planet("Earth", 149600, 365, 6357, 86400, earthMoons);
+            saturn =        new Planet("Saturn", 1429400, 10760, 58232, 38520, new Moon[] {});
+            mercury =       new Planet("Mercury", 57910, 88, 2440, 5067000, new Moon[] {});
+            venus =         new Planet("Venus", 108200, 225, 6052, 10087200, new Moon[] { });
+            mars =          new Planet("Mars", 227940, 687, 3389, 88620, new Moon[] { });
+            jupiter =       new Planet("Jupiter", 778330, 4333, 69911, 35760, new Moon[] { });
+            uranus =        new Planet("Uranus", 2870990, 30685, 25362, 62040, new Moon[] { });
+            neptune =       new Planet("Neptune", 4505300, 60190, 24622, 57960, new Moon[] { });
+            pluto =         new DwarfPlanet("Pluto", 593520, 90550, 1188, 550800, new Moon[] { });
             #endregion
 
             #region SpaceObject UpdatePositionEvent

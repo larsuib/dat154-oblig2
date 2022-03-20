@@ -35,13 +35,13 @@
             </Grid>
 
             <Grid x:Name="Ellipse_Jupiter" Canvas.Left="910" Canvas.Top="375">
-                <Ellipse  Fill="SaddleBrown" Width="60" Height="60"/>
+                <Ellipse  Fill="SaddleBrown" Width="50" Height="50"/>
                 <TextBlock Text="Jupiter" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,60,0,-1000" FontSize="10"/>
 
             </Grid>
 
             <Grid x:Name="Ellipse_Saturn" Canvas.Left="990" Canvas.Top="375">
-                <Ellipse  Fill="Peru" Width="70" Height="70"/>
+                <Ellipse  Fill="Peru" Width="50" Height="50"/>
                 <TextBlock Text="Saturn" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,68,0,-1000" FontSize="10"/>
 
             </Grid>
