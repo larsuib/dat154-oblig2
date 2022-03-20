@@ -80,16 +80,27 @@ namespace Space_Sim_GUI
             var centerX = (double) Space.RenderSize.Width / 2;
             var centerY = (double) Space.RenderSize.Height / 2;
 
+            //SetEllipsePositionFromObject(Ellipse_Sun, sun, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Earth, earth, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Saturn, saturn, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Mercury, mercury, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Venus, venus, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Mars, mars, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Jupiter, jupiter, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Uranus, uranus, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Neptune, neptune, centerX, centerY);
+            //SetEllipsePositionFromObject(Ellipse_Pluto, pluto, centerX, centerY);
+
             SetEllipsePositionFromObject(Ellipse_Sun, sun, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Earth, earth, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Saturn, saturn, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Mercury, mercury, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Venus, venus, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Mars, mars, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Jupiter, jupiter, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Uranus, uranus, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Neptune, neptune, centerX, centerY);
-            SetEllipsePositionFromObject(Ellipse_Pluto, pluto, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Earth, earth, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Saturn, saturn, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Mercury, mercury, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Venus, venus, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Mars, mars, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Jupiter, jupiter, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Uranus, uranus, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Neptune, neptune, centerX, centerY);
+            SetGridPositionFromObject(Ellipse_Pluto, pluto, centerX, centerY);
         }
 
         private void SetEllipsePositionFromObject(Ellipse ellipseObject, SpaceObject spaceObject, double centerX, double centerY)
@@ -98,10 +109,18 @@ namespace Space_Sim_GUI
             ellipseObject.Width = SizeScaling(spaceObject);
             ellipseObject.Height = SizeScaling(spaceObject);
 
-            Canvas.SetLeft(ellipseObject, centerX - ellipseObject.Width/2 + spaceObject.X);
-            Canvas.SetTop(ellipseObject, centerY - ellipseObject.Height/2 + spaceObject.Y);
+            Canvas.SetLeft(ellipseObject, centerX - ellipseObject.Width / 2 + spaceObject.X);
+            Canvas.SetTop(ellipseObject, centerY - ellipseObject.Height / 2 + spaceObject.Y);
         }
+        private void SetGridPositionFromObject(Grid ellipseObject, SpaceObject spaceObject, double centerX, double centerY)
+        {
+            // Size scaling
+            ellipseObject.Width = SizeScaling(spaceObject);
+            ellipseObject.Height = SizeScaling(spaceObject);
 
+            Canvas.SetLeft(ellipseObject, centerX - ellipseObject.Width / 2 + spaceObject.X);
+            Canvas.SetTop(ellipseObject, centerY - ellipseObject.Height / 2 + spaceObject.Y);
+        }
         private double SizeScaling(SpaceObject spaceObject)
         {
             if (spaceObject.ObjectRadius == 0)

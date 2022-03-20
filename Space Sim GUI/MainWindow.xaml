@@ -7,13 +7,66 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow" Height="800" Width="1200">
     <Grid>
-        <Canvas x:Name="Space" Background="Black">
+        <Canvas x:Name="Space" Background="Black" Margin="0,-1,0,0">
             <Label x:Name="DaysPassedLabel" Foreground="White" Canvas.Left="0" Canvas.Top="0"/>
             <Label x:Name="TimeSpeed" Foreground="White" Canvas.Left="0" Canvas.Top="20"/>
             <Label x:Name="EarthCoordinates" Foreground="White" Canvas.Left="0" Canvas.Top="40"/>
-            
+
             <Ellipse x:Name="Ellipse_Sun" Fill="Yellow" Width="80" Height="80" Canvas.Left="560" Canvas.Top="360"/>
-            <Ellipse x:Name="Ellipse_Earth" Fill="Green" Width="50" Height="50" Canvas.Left="720" Canvas.Top="375"/>
+
+            <Grid x:Name="Ellipse_Mercury" Canvas.Left="700" Canvas.Top="375">
+                <Ellipse Fill="Orange" Width="25" Height="25" />
+                <TextBlock Text="Mercury" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,25,0,-1000" FontSize="10"/>
+            </Grid>
+
+            <Grid x:Name="Ellipse_Venus" Canvas.Left="740" Canvas.Top="375">
+                <Ellipse  Fill="Brown" Width="30" Height="30"  />
+                <TextBlock Text="Venus" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,30,0,-1000" FontSize="10"/>
+            </Grid>
+
+            <Grid x:Name="Ellipse_Earth" Canvas.Left="790" Canvas.Top="375">
+                <Ellipse  Fill="Green" Width="40" Height="40"/>
+                <TextBlock Text="Earth" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,40,0,-1000" FontSize="10"/>
+            </Grid>
+
+            <Grid x:Name="Ellipse_Mars" Canvas.Left="850" Canvas.Top="375">
+                <Ellipse Fill="Red" Width="25" Height="25"/>
+                <TextBlock Text="Mars" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,25,0,-1000" FontSize="10"/>
+            </Grid>
+
+            <Grid x:Name="Ellipse_Jupiter" Canvas.Left="910" Canvas.Top="375">
+                <Ellipse  Fill="SaddleBrown" Width="60" Height="60"/>
+                <TextBlock Text="Jupiter" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,60,0,-1000" FontSize="10"/>
+
+            </Grid>
+
+            <Grid x:Name="Ellipse_Saturn" Canvas.Left="990" Canvas.Top="375">
+                <Ellipse  Fill="Peru" Width="70" Height="70"/>
+                <TextBlock Text="Saturn" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,68,0,-1000" FontSize="10"/>
+
+            </Grid>
+
+
+            <Grid x:Name="Ellipse_Uranus" Canvas.Left="1070" Canvas.Top="375">
+                <Ellipse  Fill="DarkGray" Width="40" Height="40"/>
+                <TextBlock Text="Uranus" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,38,0,-1000" FontSize="10"/>
+
+            </Grid>
+
+            <Grid x:Name="Ellipse_Neptune" Canvas.Left="1120" Canvas.Top="375">
+                <Ellipse Fill="Blue" Width="50" Height="50"/>
+                <TextBlock Text="Neptune" Foreground="White" Width="50" Height="18" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,50,0,-1000" FontSize="10"/>
+
+            </Grid>
+
+            <Grid x:Name="Ellipse_Pluto" Canvas.Left="1180" Canvas.Top="375" >
+                <Ellipse  Fill="CadetBlue" Width="10" Height="10"/>
+                <TextBlock Text="Pluto" Foreground="White" Width="15" Height="10" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,12,0,-1000" FontSize="5"/>
+
+            </Grid>
+
+
+            <!--<Ellipse x:Name="Ellipse_Earth" Fill="Green" Width="50" Height="50"  Canvas.Left="720" Canvas.Top="375"/>
             <Ellipse x:Name="Ellipse_Mars" Fill="Red" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
             <Ellipse x:Name="Ellipse_Jupiter" Fill="SaddleBrown" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
             <Ellipse x:Name="Ellipse_Saturn" Fill="Peru" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
@@ -21,7 +74,10 @@
             <Ellipse x:Name="Ellipse_Neptune" Fill="Blue" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
             <Ellipse x:Name="Ellipse_Mercury" Fill="Orange" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
             <Ellipse x:Name="Ellipse_Venus" Fill="Brown" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
-            <Ellipse x:Name="Ellipse_Pluto" Fill="Blue" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>
+            <Ellipse x:Name="Ellipse_Pluto" Fill="Blue" Width="30" Height="30"  Canvas.Left="785" Canvas.Top="375"/>-->
+
+
+
         </Canvas>
     </Grid>
 </Window>
